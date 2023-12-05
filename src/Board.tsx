@@ -1,6 +1,6 @@
-import React from "react";
-import { BoardProps } from "./BoardProps";
-import { Square } from "./Square";
+import React from 'react';
+import { BoardProps } from './BoardProps';
+import { Square } from './Square';
 
 export function Board(props: BoardProps): JSX.Element {
   const renderSquare = (i: number) => {

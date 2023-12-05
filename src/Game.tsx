@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "./index.scss";
-import { Board } from "./Board";
+import React, { useState } from 'react';
+import './index.scss';
+import { Board } from './Board';
 
 export function Game(): JSX.Element {
   const [state, setState] = useState({
@@ -18,7 +18,7 @@ export function Game(): JSX.Element {
   const winner = calculateWinner(current.squares);
 
   const moves = history.map((step: any, move: number) => {
-    const desc = move ? "Go to move #" + move : "Go to game start";
+    const desc = move ? 'Go to move #' + move : 'Go to game start';
     return (
       <li key={move}>
         <button onClick={() => jumpTo(move)}>{desc}</button>
@@ -28,9 +28,9 @@ export function Game(): JSX.Element {
 
   let status;
   if (winner) {
-    status = "Winner: " + winner;
+    status = 'Winner: ' + winner;
   } else {
-    status = "Next player: " + (state.xIsNext ? "X" : "O");
+    status = 'Next player: ' + (state.xIsNext ? 'X' : 'O');
   }
 
   const handleClick = (i: number) => {
@@ -40,7 +40,7 @@ export function Game(): JSX.Element {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = state.xIsNext ? "X" : "O";
+    squares[i] = state.xIsNext ? 'X' : 'O';
     setState({
       history: history.concat([
         {

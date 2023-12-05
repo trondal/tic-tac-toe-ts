@@ -1,5 +1,5 @@
-import React from "react";
-import { SquareProps } from "./SquareProps";
+import React from 'react';
+import { SquareProps } from './SquareProps';
 
 export function Square(props: SquareProps): JSX.Element {
   return (
