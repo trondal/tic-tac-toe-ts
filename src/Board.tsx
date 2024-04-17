@@ -1,10 +1,16 @@
-import React from 'react';
 import { BoardProps } from './BoardProps';
 import { Square } from './Square';
 
-export function Board(props: BoardProps): JSX.Element {
+export function Board(props: BoardProps) {
   const renderSquare = (i: number) => {
-    return <Square value={props.squares[i]} onClick={() => props.onClick(i)} />;
+    return (
+      <Square
+        value={props.squares[i]}
+        onClick={() => {
+          props.onClick(i);
+        }}
+      />
+    );
   };
   return (
     <div>

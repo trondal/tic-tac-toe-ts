@@ -1,5 +1,10 @@
+export interface SnapShot {
+  squares: string | null[];
+}
+
+
 export interface GameState {
-  history: { squares: string[] }[];
+  history: SnapShot[];
   stepNumber: number;
   xIsNext: boolean;
 }
