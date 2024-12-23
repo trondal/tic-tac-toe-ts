@@ -1,8 +1,18 @@
 import { useState } from 'react';
 import './index.css';
+import { useState } from 'react';
+import './index.css';
 import { Board } from './Board';
 import { GameState, SnapShot } from './GameState';
+import { GameState, SnapShot } from './GameState';
 
+export function Game() {
+  const snap: SnapShot = {
+    squares: Array(9).fill(null, 0, 9)
+  };
+
+  const [state, setState] = useState<GameState>({
+    history: [snap],
 export function Game() {
   const snap: SnapShot = {
     squares: Array(9).fill(null, 0, 9)
@@ -29,6 +39,13 @@ export function Game() {
         >
           {desc}
         </button>
+        <button
+          onClick={() => {
+            jumpTo(move);
+          }}
+        >
+          {desc}
+        </button>
       </li>
     );
   });
@@ -44,6 +61,7 @@ export function Game() {
     const history = state.history.slice(0, state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
+    if (calculateWinner(squares) ?? squares[i]) {
     if (calculateWinner(squares) ?? squares[i]) {
       return;
     }
@@ -68,23 +86,27 @@ export function Game() {
   };
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board
-          squares={current.squares}
-          onClick={(i: number) => {
-            handleClick(i);
-          }}
-        />
+    <>
+      <h1>Tic Tac Toe</h1>
+      <div className="game">
+        <div className="game-board">
+          <Board
+            squares={current.squares}
+            onClick={(i: number) => {
+              handleClick(i);
+            }}
+          />
+        </div>
+        <div className="game-info">
+          <div>{status}</div>
+          <ol>{moves}</ol>
+        </div>
       </div>
-      <div className="game-info">
-        <div>{status}</div>
-        <ol>{moves}</ol>
-      </div>
-    </div>
+    </>
   );
 }
 
+function calculateWinner(squares: string[]) {
 function calculateWinner(squares: string[]) {
   const lines = [
     [0, 1, 2],
@@ -96,6 +118,7 @@ function calculateWinner(squares: string[]) {
     [0, 4, 8],
     [2, 4, 6]
   ];
+  // eslint-disable-next-line @typescript-eslint/prefer-for-of
   // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
