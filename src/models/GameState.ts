@@ -1,7 +1,4 @@
-export interface SnapShot {
-  squares: string | null[];
-}
-
+import { SnapShot } from "./SnapShot";
 
 export interface GameState {
   history: SnapShot[];

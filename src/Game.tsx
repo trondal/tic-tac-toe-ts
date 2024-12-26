@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./index.css";
 import { Board } from "./Board";
-import { GameState, SnapShot } from "./GameState";
+import { SnapShot } from "./models/SnapShot";
+import { GameState } from "./models/GameState";
 
 export function Game() {
   const snap: SnapShot = {
