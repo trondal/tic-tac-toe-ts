@@ -1,7 +1,11 @@
-import { BoardProps } from './BoardProps';
 import { Square } from './Square';
 
-export function Board(props: BoardProps) {
+interface Props {
+  squares: string[];
+  onClick: (i: number) => void;
+}
+
+export function Board(props: Props) {
   const renderSquare = (i: number) => {
     return (
       <Square

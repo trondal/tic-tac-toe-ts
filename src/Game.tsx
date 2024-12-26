@@ -1,12 +1,15 @@
+import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
 import { useState } from 'react';
-import './index.css';
 import { Board } from './Board';
-import { SnapShot } from './models/SnapShot';
 import { GameState } from './models/GameState';
+import { SnapShot } from './models/SnapShot';
+import './index.css';
+import { Stack } from '@mui/material';
 
 export function Game() {
   const snap: SnapShot = {
-    squares: Array(9).fill(null, 0, 9)
+    squares: ['', '', '', '', '', '', '', '', '']
   };
 
   const [state, setState] = useState<GameState>({
@@ -19,18 +22,16 @@ export function Game() {
   const current = history[state.stepNumber];
   const winner = calculateWinner(current.squares);
 
-  const moves = history.map((step: any, move: number) => {
+  const moves = history.map((_step: any, move: number) => {
     const desc = move ? 'Go to move #' + move : 'Go to game start';
     return (
-      <li key={move}>
-        <button
-          onClick={() => {
-            jumpTo(move);
-          }}
-        >
-          {desc}
-        </button>
-      </li>
+      <Chip
+        key={move}
+        onClick={() => {
+          jumpTo(move);
+        }}
+        label={desc}
+      />
     );
   });
 
@@ -79,8 +80,10 @@ export function Game() {
         />
       </div>
       <div className="game-info">
-        <div>{status}</div>
-        <ol>{moves}</ol>
+        <Typography variant="h6" component="h1">
+          {status}
+        </Typography>
+        <Stack spacing={1}>{moves}</Stack>
       </div>
     </div>
   );
