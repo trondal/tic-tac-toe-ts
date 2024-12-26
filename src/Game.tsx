@@ -22,13 +22,13 @@ export function Game() {
   const current = history[state.stepNumber];
   const winner = calculateWinner(current.squares);
 
-  const moves = history.map((_step: any, move: number) => {
-    const desc = move ? 'Go to move #' + move : 'Go to game start';
+  const moves = history.map((_item: SnapShot, index: number) => {
+    const desc = index ? 'Go to move #' + index : 'Go to game start';
     return (
       <Chip
-        key={move}
+        key={index}
         onClick={() => {
-          jumpTo(move);
+          jumpTo(index);
         }}
         label={desc}
       />
