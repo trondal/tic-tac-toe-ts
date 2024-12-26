@@ -1,5 +1,5 @@
-import { BoardProps } from './BoardProps'
-import { Square } from './Square'
+import { BoardProps } from './BoardProps';
+import { Square } from './Square';
 
 export function Board(props: BoardProps) {
   const renderSquare = (i: number) => {
@@ -7,11 +7,11 @@ export function Board(props: BoardProps) {
       <Square
         value={props.squares[i]}
         onClick={() => {
-          props.onClick(i)
+          props.onClick(i);
         }}
       />
-    )
-  }
+    );
+  };
   return (
     <div>
       <div className="board-row">
@@ -30,5 +30,5 @@ export function Board(props: BoardProps) {
         {renderSquare(8)}
       </div>
     </div>
-  )
+  );
 }
